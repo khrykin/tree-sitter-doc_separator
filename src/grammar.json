@@ -24,7 +24,7 @@
     },
     "separator": {
       "type": "PATTERN",
-      "value": "─+\\n"
+      "value": "─{5,}.*\\n"
     },
     "section": {
       "type": "PATTERN",

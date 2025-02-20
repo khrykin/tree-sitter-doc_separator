@@ -15,7 +15,7 @@ module.exports = grammar({
 
     _content: ($) => choice($.separator, $.section),
 
-    separator: () => /─+\n/,
+    separator: () => /─{5,}.*\n/,
 
     section: () => /[^─]+/,
   },

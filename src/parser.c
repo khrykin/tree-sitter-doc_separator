@@ -89,33 +89,45 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(2);
-      if (lookahead == 0x2500) ADVANCE(1);
+      if (eof) ADVANCE(6);
+      if (lookahead == 0x2500) ADVANCE(5);
       if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(4);
-      if (lookahead != 0) ADVANCE(5);
+          lookahead == ' ') ADVANCE(8);
+      if (lookahead != 0) ADVANCE(9);
       END_STATE();
     case 1:
-      if (lookahead == '\n') ADVANCE(3);
-      if (lookahead == 0x2500) ADVANCE(1);
+      if (lookahead == '\n') ADVANCE(7);
+      if (lookahead != 0) ADVANCE(1);
       END_STATE();
     case 2:
-      ACCEPT_TOKEN(ts_builtin_sym_end);
+      if (lookahead == 0x2500) ADVANCE(1);
       END_STATE();
     case 3:
-      ACCEPT_TOKEN(sym_separator);
+      if (lookahead == 0x2500) ADVANCE(2);
       END_STATE();
     case 4:
-      ACCEPT_TOKEN(sym_section);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(4);
-      if (lookahead != 0 &&
-          lookahead != 0x2500) ADVANCE(5);
+      if (lookahead == 0x2500) ADVANCE(3);
       END_STATE();
     case 5:
+      if (lookahead == 0x2500) ADVANCE(4);
+      END_STATE();
+    case 6:
+      ACCEPT_TOKEN(ts_builtin_sym_end);
+      END_STATE();
+    case 7:
+      ACCEPT_TOKEN(sym_separator);
+      END_STATE();
+    case 8:
+      ACCEPT_TOKEN(sym_section);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(8);
+      if (lookahead != 0 &&
+          lookahead != 0x2500) ADVANCE(9);
+      END_STATE();
+    case 9:
       ACCEPT_TOKEN(sym_section);
       if (lookahead != 0 &&
-          lookahead != 0x2500) ADVANCE(5);
+          lookahead != 0x2500) ADVANCE(9);
       END_STATE();
     default:
       return false;
