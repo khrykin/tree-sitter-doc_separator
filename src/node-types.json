@@ -1,0 +1,30 @@
+[
+  {
+    "type": "document",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "section",
+          "named": true
+        },
+        {
+          "type": "separator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section",
+    "named": true
+  },
+  {
+    "type": "separator",
+    "named": true
+  }
+]

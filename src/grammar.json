@@ -1,0 +1,45 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "doc_separator",
+  "rules": {
+    "document": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_content"
+      }
+    },
+    "_content": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "separator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section"
+        }
+      ]
+    },
+    "separator": {
+      "type": "PATTERN",
+      "value": "──*\\n"
+    },
+    "section": {
+      "type": "PATTERN",
+      "value": "[^─]+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
