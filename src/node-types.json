@@ -20,11 +20,16 @@
     }
   },
   {
-    "type": "section",
-    "named": true
+    "type": "separator",
+    "named": true,
+    "fields": {}
   },
   {
-    "type": "separator",
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "section",
     "named": true
   }
 ]
